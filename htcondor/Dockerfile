@@ -42,6 +42,9 @@ RUN chown -R ${SUBMIT_USER}:${SUBMIT_USER} /home/${SUBMIT_USER}/example
 
 RUN yum update -y
 
+RUN mkdir /home/nextcloud
+RUN chmod -R 777 /home/nextcloud/
+
 # Use this if you're not going to restart HTCondor in the container.
 # If you do need to do that, you're better off running the condor_master
 # command manually
