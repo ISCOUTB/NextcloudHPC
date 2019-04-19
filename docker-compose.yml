@@ -69,10 +69,22 @@ services:
       - ./nextcloud/data:/var/www/html/data
       - ./nextcloud/themes:/var/www/html/themes
       - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+    restart: unless-stopped
+
+  htcondor:
+    build: ./htcondor
+    container_name: nextcloud-htcondor
+    privileged: true
+    networks:
+      - nextcloud_network
+    volumes:
+      - ./nextcloud:/home/nextcloud
+      - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
 
 volumes:

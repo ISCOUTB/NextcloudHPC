@@ -2,3 +2,4 @@
 .env
 docker-compose_back.yml
 nextcloud
+proxy
