@@ -12,8 +12,9 @@ RUN yum -y install \
          sudo \
          which \
          openssh-clients && \
-    yum -y groupinstall 'Development Tools' && \
-    curl -O http://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
+    yum -y groupinstall 'Development Tools'
+RUN yum -y install wget
+RUN wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
     rpm --import RPM-GPG-KEY-HTCondor && \
     yum-config-manager --add-repo https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo && \
     yum -y install condor-bosco && \

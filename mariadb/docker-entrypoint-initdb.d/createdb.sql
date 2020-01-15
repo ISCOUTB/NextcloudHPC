@@ -25,4 +25,7 @@
 CREATE DATABASE IF NOT EXISTS `nextcloud` COLLATE 'utf8_general_ci' ;
 GRANT ALL ON `nextcloud`.* TO 'default'@'%' ;
 
+CREATE DATABASE IF NOT EXISTS `tasks` COLLATE 'utf8_general_ci' ;
+GRANT ALL ON `tasks`.* TO 'default'@'%';
+
 FLUSH PRIVILEGES ;

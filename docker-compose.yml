@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   proxy:
     image: jwilder/nginx-proxy:alpine
     labels:
@@ -85,6 +84,14 @@ services:
     volumes:
       - ./nextcloud:/home/nextcloud
       - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+
+  docker:
+    build: ./docker
+    container_name: nextcloud-docker_dind
+    privileged: true
+    networks:
+      - nextcloud_network
     restart: unless-stopped
 
 volumes:
