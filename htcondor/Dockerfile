@@ -27,7 +27,7 @@ RUN wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
     mkdir /home/${SUBMIT_USER}/example && \
     sed -i 's/\(^Defaults.*requiretty.*\)/#\1/' /etc/sudoers && \
     rm -f /etc/localtime && \
-    ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
+    ln -s /usr/share/zoneinfo/America/Bogota /etc/localtime
 
 # KNOBS and startup script
 COPY condor_config.docker_image /etc/condor/config.d/

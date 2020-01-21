@@ -23,9 +23,9 @@
 #GRANT ALL ON `dev_db_2`.* TO 'default'@'%' ;
 
 CREATE DATABASE IF NOT EXISTS `nextcloud` COLLATE 'utf8_general_ci' ;
-GRANT ALL ON `nextcloud`.* TO 'default'@'%' ;
+GRANT ALL ON `nextcloud`.* TO 'root'@'%' ;
 
 CREATE DATABASE IF NOT EXISTS `tasks` COLLATE 'utf8_general_ci' ;
-GRANT ALL ON `tasks`.* TO 'default'@'%';
+GRANT ALL ON `tasks`.* TO 'root'@'%' ;
 
 FLUSH PRIVILEGES ;
