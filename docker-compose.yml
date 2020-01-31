@@ -86,16 +86,27 @@ services:
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
 
-  docker:
-    build: ./docker
-    container_name: nextcloud-docker_dind
+### RabbitMQ #############################################
+  rabbitmq:
+    build: ./rabbitmq
+    ports:
+      - "${RABBITMQ_NODE_HOST_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
+      - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
     privileged: true
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    hostname: rabbitmq
+    volumes:
+      - ${DATA_PATH_HOST}/rabbitmq:/var/lib/rabbitmq
     networks:
       - nextcloud_network
-    restart: unless-stopped
 
 volumes:
   nextcloud:
-
+    driver: ${VOLUMES_DRIVER}
+    
 networks:
   nextcloud_network:
+    driver: ${NETWORKS_DRIVER}

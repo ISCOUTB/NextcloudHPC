@@ -8,6 +8,9 @@ DATA_PATH_HOST=~/.nextcloud/data
 
 ### Drivers ################################################
 
+# All volumes driver
+VOLUMES_DRIVER=local
+
 # All Networks driver
 NETWORKS_DRIVER=bridge
 
@@ -29,3 +32,11 @@ PASS=123456
 VIRTUAL_HOST=VIRTUAL_HOST
 LETSENCRYPT_HOST=LETSENCRYPT_HOST
 LETSENCRYPT_EMAIL=LETSENCRYPT_EMAIL
+
+### RABBITMQ ##############################################
+
+RABBITMQ_NODE_HOST_PORT=5672
+RABBITMQ_MANAGEMENT_HTTP_HOST_PORT=15672
+RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT=15671
+RABBITMQ_DEFAULT_USER=guest
+RABBITMQ_DEFAULT_PASS=guest
