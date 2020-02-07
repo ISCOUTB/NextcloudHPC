@@ -16,6 +16,7 @@ services:
       - ./proxy/vhost.d:/etc/nginx/vhost.d:rw
       - ./proxy/html:/usr/share/nginx/html:rw
       - ./proxy/certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     restart: unless-stopped
 
   letsencrypt:
@@ -29,6 +30,7 @@ services:
       - ./proxy/certs:/etc/nginx/certs:rw
       - ./proxy/vhost.d:/etc/nginx/vhost.d:rw
       - ./proxy/html:/usr/share/nginx/html:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
 
   mariadb:
@@ -62,6 +64,7 @@ services:
       - ./nextcloud/custom_apps:/var/www/html/custom_apps
       - ./nextcloud/data:/var/www/html/data
       - ./nextcloud/themes:/var/www/html/themes
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
