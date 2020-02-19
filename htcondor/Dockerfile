@@ -2,7 +2,7 @@ FROM centos:centos7
 
 LABEL maintainer="Angel Jimenez <ajimenez@digitalcaribe.com.co>"
 
-ARG SUBMIT_USER=submitter
+ARG SUBMIT_USER=www-data
 ARG GID=1000
 ARG UID=1000
 ARG PASS=123456
@@ -44,6 +44,7 @@ RUN chown -R ${SUBMIT_USER}:${SUBMIT_USER} /home/${SUBMIT_USER}/example
 RUN yum update -y
 
 RUN mkdir /home/nextcloud
+#RUN chown ${SUBMIT_USER}:${SUBMIT_USER} /home/nextcloud
 RUN chmod -R 777 /home/nextcloud/
 
 # Use this if you're not going to restart HTCondor in the container.

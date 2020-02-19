@@ -74,7 +74,6 @@ services:
   htcondor:
     build: ./htcondor
     container_name: nextcloud-htcondor
-    privileged: true
     networks:
       - nextcloud_network
     volumes:
