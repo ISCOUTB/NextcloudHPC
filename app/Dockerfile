@@ -10,3 +10,5 @@ RUN curl -sS https://getcomposer.org/installer |php && \
 	docker-php-ext-install sockets && \
 	apt update && \
 	apt install git git-flow -y
+
+RUN apt install cron -y
