@@ -13,7 +13,7 @@ RUN curl -sS https://getcomposer.org/installer |php && \
 
 RUN apt install cron -y
 
-COPY occ.cron /etc/cron.d/occ-cron
+COPY occ-cron /etc/cron.d/occ-cron
 
 RUN chmod 0644 /etc/cron.d/occ-cron
 
