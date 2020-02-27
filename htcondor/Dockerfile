@@ -47,6 +47,12 @@ RUN mkdir /home/nextcloud
 RUN chmod -R 777 /home/nextcloud/
 
 RUN yum install nano -y
+
+COPY recibe.py /home/${SUBMIT_USER}/
+
+RUN yum update -y \
+    yum install cronie -y
+
 RUN yum update -y \
     && yum install -y https://centos7.iuscommunity.org/ius-release.rpm \
     && yum install -y python36u python36u-libs python36u-devel python36u-pip \
@@ -59,8 +65,6 @@ RUN rm /usr/bin/python
 # python must be pointing to python3.6
 RUN ln -s /usr/bin/python3.6 /usr/bin/python
 RUN python -m pip install pika --upgrade
-
-COPY recibe.py /home/${SUBMIT_USER}/
 
 # Use this if you're not going to restart HTCondor in the container.
 # If you do need to do that, you're better off running the condor_master
