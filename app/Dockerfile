@@ -8,7 +8,7 @@ RUN usermod -u 1000 www-data && \
 RUN curl -sS https://getcomposer.org/installer |php && \
 	mv composer.phar /usr/local/bin/composer && \ 
 	docker-php-ext-install sockets && \
-	apt update && \
-	apt install git git-flow -y
+	apt-get update && \
+	apt-get install git git-flow -y
 
 RUN apt-get install cron nano -y
