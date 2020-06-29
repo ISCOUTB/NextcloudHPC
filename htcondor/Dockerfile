@@ -54,10 +54,10 @@ RUN yum update -y \
     yum install cronie -y
 
 RUN yum update -y 
-RUN yum install -y https://centos7.iuscommunity.org/ius-release.rpm
-RUN yum install -y python36u python36u-libs python36u-devel python36u-pip
-RUN yum install -y which gcc 
-RUN yum install -y openldap-devel
+    && yum install -y https://centos7.iuscommunity.org/ius-release.rpm \
+    && yum install -y python36u python36u-libs python36u-devel python36u-pip \
+    && yum install -y which gcc \
+    && yum install -y openldap-devel
 
 RUN pip3.6 install pipenv
 RUN ln -s /usr/bin/pip3.6 /bin/pip

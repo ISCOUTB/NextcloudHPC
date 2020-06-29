@@ -21,5 +21,5 @@ echo "${RED}Installing PHP And Modules${NC}"
 apt-get install software-properties-common -y
 apt-get install python-software-properties -y
 apt-get install unzip zip -y
-apt-get install php 
+apt-get install php php-mbstring -y
 apt-get install composer -y
