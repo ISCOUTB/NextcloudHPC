@@ -22,5 +22,6 @@ apt-get install software-properties-common -y
 apt-get install python-software-properties -y
 apt-get install unzip zip -y
 apt-get install php php-mbstring php-xml -y
+apt-get remove apache2 -y
 apt-get install composer -y
 apt-get autoremove -y
