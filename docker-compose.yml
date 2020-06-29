@@ -83,7 +83,7 @@ services:
 ### RabbitMQ #############################################
   rabbitmq:
     build: ./rabbitmq
-    container_name: nextclod-rabbitmq
+    container_name: nextcloud-rabbitmq
     ports:
       - "${RABBITMQ_NODE_HOST_PORT}:5672"
       - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"

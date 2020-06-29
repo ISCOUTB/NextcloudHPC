@@ -52,19 +52,20 @@ COPY recibe.py /home/${SUBMIT_USER}/
 
 RUN yum update -y \
     yum install cronie -y
+    
+RUN yum install gcc openssl-devel bzip2-devel libffi-devel -y
 
-RUN yum update -y \
-    && yum install -y https://centos7.iuscommunity.org/ius-release.rpm \
-    && yum install -y python36u python36u-libs python36u-devel python36u-pip \
-    && yum install -y which gcc \
-    && yum install -y openldap-devel
+RUN cd /usr/src && wget https://www.python.org/ftp/python/3.7.7/Python-3.7.7.tgz && tar xzf Python-3.7.7.tgz && cd Python-3.7.7 && ./configure --enable-optimizations && make altinstall && rm /usr/src/Python-3.7.7.tgz
 
-RUN pip3.6 install pipenv
-RUN ln -s /usr/bin/pip3.6 /bin/pip
+RUN pip3.7 install --upgrade pip
+
+
+RUN pip3.7 install pipenv
+RUN ln -s /usr/local/bin/pip3.7 /bin/pip
 RUN rm /usr/bin/python
-# python must be pointing to python3.6
-RUN ln -s /usr/bin/python3.6 /usr/bin/python
-RUN python -m pip install pika --upgrade
+# python must be pointing to python3.7
+RUN ln -s /usr/local/bin/python3.7 /usr/bin/python
+RUN pip install pika --upgrade
 
 # Use this if you're not going to restart HTCondor in the container.
 # If you do need to do that, you're better off running the condor_master
