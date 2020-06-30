@@ -1,23 +1,12 @@
 #!/bin/bash
 # Ubuntu 18.04.03 LTS
-
-RED='\033[0;33m'
-NC='\033[0m'
-
-echo "${RED}Updating Operting System${NC}"
-
+echo "Updating Operting System"
 apt-get update
-
-echo "${RED}Upgrating Operating System${NC}"
-
+echo "Upgrating Operating System"
 apt-get -y upgrade
-
-echo "${RED}Install Dependencies${NC}"
-
+echo "Install Dependencies"
 sudo apt install docker.io docker-compose -y
-
-echo "${RED}Installing PHP And Modules${NC}"
-
+echo "Installing PHP And Modules"
 apt-get install software-properties-common -y
 apt-get install python-software-properties -y
 apt-get install unzip zip -y
